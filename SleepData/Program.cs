@@ -15,7 +15,7 @@ namespace SleepData
             string resp = Console.ReadLine();
 
             // specify path for data file
-            string file = "/users/jgrissom/downloads/data.txt";
+            string file = "data.txt";
 
             if (resp == "1")
             {
@@ -58,9 +58,37 @@ namespace SleepData
             }
             else if (resp == "2")
             {
-                // TODO: parse data file
-
+                if (File.Exists(file))
+                {
+                    // read data from file
+                    StreamReader sr = new StreamReader(file);
+                    while (!sr.EndOfStream)
+                    {
+                        string line = sr.ReadLine();
+               
+                        string[] week = line.Split(',');
+                        
+                        DateTime date = DateTime.Parse(week[0]);
+                      
+                        int[] hours = Array.ConvertAll(week[1].Split('|'), int.Parse);
+                       
+                        Console.WriteLine($"Week of {date:MMM}, {date:dd}, {date:yyyy}");
+                        // display column headers
+                        Console.WriteLine($"{"Sun",3}{"Mon",3}{"Tue",3}{"Wed",3}{"Thur",3}{"Fri",3}{"Sat",3}"); 
+                        Console.WriteLine($"{"--",3}{"--",3}{"--",3}{"--",3}{"--",3}{"--",3}{"--",3}"); 
+                        // display hours of sleep for each day
+                        Console.WriteLine($"{hours[0],3}{hours[1],3}{hours[2],3}{hours[3],3}{hours[4],3}{hours[5],3}{hours[6],3}"); 
+                        Console.WriteLine();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("File does not exist");
+                   
+                }
             }
+           
+        }
         }
     }
-}
+
