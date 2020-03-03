@@ -48,13 +48,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Media.cs" />
     <Compile Include="FileScrubber.cs" />
-    <Compile Include="MovieFile.cs" />
-    <Compile Include="AlbumFile.cs" />
-    <Compile Include="BookFile.cs" />
+    <Compile Include="FileManager\AlbumFile.cs" />
+    <Compile Include="FileManager\MovieFile.cs" />
+    <Compile Include="FileManager\BookFile.cs" />
+    <Compile Include="Movie.cs" />
+    <Compile Include="FileManager\Album.cs" />
+    <Compile Include="Book.cs" />
+    <Compile Include="FileManager\FileManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="movies.csv" />
     <None Include="packages.config" />
+    <None Include="albums.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="FileManager\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
